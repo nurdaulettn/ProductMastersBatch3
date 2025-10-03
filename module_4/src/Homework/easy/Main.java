@@ -3,7 +3,8 @@ package Homework.easy;
 public class Main {
 
   public static void main(String[] args) {
-    System.out.println("Hello World");
+    StringPrinter printer = new StringPrinter();
+    printer.print("Hello World");
   }
 
 }
