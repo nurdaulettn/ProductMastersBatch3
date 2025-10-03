@@ -13,7 +13,7 @@ public class Main {
 //        System.out.println(myData.toString());
 //        System.out.println(geoData.toString());
 
-        DataSource<UserData> userDataDataSource = new Repository<>(
+        DataSource<UserData> userDataDataSource = new UserRepository(
                 new CachedDataSource<>(), new UserDataCloudDataSource()
         );
         UserData userData = userDataDataSource.getData();
