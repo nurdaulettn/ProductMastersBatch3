@@ -1,7 +1,7 @@
 package Homework.five.easy;
 
 public enum DayOfWeek {
-    MODAY,
+    MONDAY,
     TUESDAY,
     WEDNESDAY,
     THURSDAY,
