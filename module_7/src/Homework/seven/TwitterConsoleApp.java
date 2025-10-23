@@ -13,7 +13,7 @@ public class TwitterConsoleApp {
   public void run() {
     System.out.print("Введите ваше имя: ");
     String userName = scanner.nextLine().trim();
-    User currentUser = new User(userName);
+    User currentUser = new User(0, userName);
     System.out.println("Добро пожаловать, " + currentUser.getName() + "!");
 
     twitterService.initializePosts();
@@ -22,6 +22,33 @@ public class TwitterConsoleApp {
       showMenu();
       int choice = getIntInput();
       switch (choice) {
+        case 1 -> {
+          System.out.print("Введите текст поста: ");
+          String text = scanner.nextLine().trim();
+          twitterService.addPost(currentUser, text);
+        }
+        case 2 -> {
+          System.out.print("Введите id поста: ");
+          int id = getIntInput();
+          twitterService.likePost(id);
+        }
+        case 3 -> {
+          System.out.print("Введите id поста: ");
+          int id = getIntInput();
+          twitterService.repostPost(id);
+        }
+        case 4 -> {
+          List<Post> posts = twitterService.getPosts();
+          posts.forEach(System.out::println);
+        }
+        case 5 -> {
+          List<Post> posts = twitterService.getPopularPosts();
+          posts.forEach(System.out::println);
+        }
+        case 6 -> {
+          List<Post> posts = twitterService.getUsersPosts(currentUser);
+          posts.forEach(System.out::println);
+        }
         case 7 -> {
           System.out.println("Выход...");
           return;
