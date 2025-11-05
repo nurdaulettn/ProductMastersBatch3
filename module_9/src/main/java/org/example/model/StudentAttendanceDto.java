@@ -1,6 +1,7 @@
 package org.example.model;
 
 public class StudentAttendanceDto {
+    private int id;
     private String name;
     private String groupName;
     private boolean isAttended;
@@ -12,6 +13,20 @@ public class StudentAttendanceDto {
         this.name = name;
         this.groupName = groupName;
         this.isAttended = isAttended;
+    }
+
+    public StudentAttendanceDto(String name, String groupName, boolean isAttended, int id) {
+        this.name = name;
+        this.groupName = groupName;
+        this.isAttended = isAttended;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,12 +58,17 @@ public class StudentAttendanceDto {
     }
 
     public static class Builder {
+        private int id;
         private String name;
         private String groupName;
         private boolean isAttended;
 
         public Builder name(String name) {
             this.name = name;
+            return this;
+        }
+        public Builder id(int id) {
+            this.id = id;
             return this;
         }
 
@@ -63,7 +83,7 @@ public class StudentAttendanceDto {
         }
 
         public StudentAttendanceDto build() {
-            return new StudentAttendanceDto(name, groupName, isAttended);
+            return new StudentAttendanceDto(name, groupName, isAttended, id);
         }
     }
 }
