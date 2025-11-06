@@ -1,4 +1,4 @@
-package org.example;
+package org.example.medium;
 
 import org.springframework.stereotype.Component;
 

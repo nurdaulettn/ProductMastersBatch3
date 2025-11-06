@@ -1,4 +1,4 @@
-package org.example;
+package org.example.medium;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,10 +11,9 @@ public class Main {
         ApplicationContext context
                 = new AnnotationConfigApplicationContext(DependencyInjectorConfig.class);
 
-        OrderService orderService = context.getBean(OrderService.class);
-        orderService.makeOrder(BigDecimal.valueOf(15));
-
         OrderService orderServiceSecond = context.getBean(OrderService.class);
         orderServiceSecond.makeOrder(BigDecimal.valueOf(15));
+        BitcoinPaymentProcessor bitcoinPaymentProcessor = context.getBean(BitcoinPaymentProcessor.class);
+        bitcoinPaymentProcessor.processPayment(BigDecimal.valueOf(15));
     }
 }

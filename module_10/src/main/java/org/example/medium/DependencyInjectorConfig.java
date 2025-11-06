@@ -1,4 +1,4 @@
-package org.example;
+package org.example.medium;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
@@ -10,11 +10,15 @@ public class DependencyInjectorConfig {
 
     @Bean
     public PaymentProcessor paymentProcessor() {
-        return new VisaCardPaymentProcessor();
+        return new PlovCoinPaymentProcessor();
     }
 
     @Bean
-    @Scope(BeanDefinition.SCOPE_SINGLETON)
+    public BitcoinPaymentProcessor bitcoinPaymentProcessor() {
+        return new BitcoinPaymentProcessor();
+    }
+
+    @Bean
     public OrderService orderService() {
         return new OrderService();
     }
