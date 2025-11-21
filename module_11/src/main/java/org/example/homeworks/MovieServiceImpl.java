@@ -21,4 +21,24 @@ public class MovieServiceImpl implements MovieService {
         return movieRepository.getMoviesByDirector(director);
     }
 
+    @Override
+    public void addMovie(Movie movie) {
+        validateMovie(movie);
+        movieRepository.addMovie(movie);
+    }
+
+    private void validateMovie(Movie movie) {
+        if(movie.getDirector() == null || movie.getDirector().isEmpty()) {
+            throw new IllegalArgumentException("Movie must have a director");
+        }
+
+        if(movie.getTitle() == null || movie.getTitle().isEmpty()) {
+            throw new IllegalArgumentException("Movie must have a title");
+        }
+
+        if(movie.getYear() < 1900){
+            throw new IllegalArgumentException("Year must be >= 1900");
+        }
+    }
+
 }
