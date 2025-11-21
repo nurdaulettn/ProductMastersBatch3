@@ -1,9 +1,7 @@
-package org.example.easy;
+package org.example.homeworks;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Service;
 
 public class Main {
     public static void main(String[] args) {

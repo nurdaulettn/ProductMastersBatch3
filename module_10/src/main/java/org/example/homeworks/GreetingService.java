@@ -1,4 +1,4 @@
-package org.example.easy;
+package org.example.homeworks;
 
 public interface GreetingService {
     void sayHello();

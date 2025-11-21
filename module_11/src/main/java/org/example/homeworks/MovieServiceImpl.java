@@ -1,4 +1,4 @@
-package org.example.easy;
+package org.example.homeworks;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,11 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> listMovies() {
         return movieRepository.getAllMovies();
+    }
+
+    @Override
+    public List<Movie> getMoviesByDirector(String director) {
+        return movieRepository.getMoviesByDirector(director);
     }
 
 }

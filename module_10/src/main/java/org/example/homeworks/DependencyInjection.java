@@ -1,4 +1,4 @@
-package org.example.easy;
+package org.example.homeworks;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
