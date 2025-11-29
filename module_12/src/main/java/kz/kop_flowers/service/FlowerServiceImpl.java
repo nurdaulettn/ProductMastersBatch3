@@ -44,4 +44,9 @@ public class FlowerServiceImpl implements FlowerService {
         return mapper.fromEntityToDto(flower);
     }
 
+    public void deleteFlowerById(Integer id){
+        Flower flower = flowerRepository.findById(id).orElseThrow(() -> new FlowerNotFoundException("Flower is not exists"));
+        flowerRepository.delete(flower);
+    }
+
 }

@@ -11,4 +11,6 @@ public interface FlowerService {
     FlowerDto getFlowerById(Integer id);
 
     FlowerDto createFlower(FlowerDto flower);
+
+    void deleteFlowerById(Integer id);
 }

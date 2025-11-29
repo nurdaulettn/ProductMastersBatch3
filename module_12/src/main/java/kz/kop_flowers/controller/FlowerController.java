@@ -33,4 +33,9 @@ public class FlowerController {
     ) {
         return flowerService.createFlower(flower);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteFlowerById(@PathVariable Integer id){
+        flowerService.deleteFlowerById(id);
+    }
 }
