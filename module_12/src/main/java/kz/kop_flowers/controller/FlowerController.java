@@ -16,7 +16,10 @@ public class FlowerController {
     private final FlowerService flowerService;
 
     @GetMapping()
-    public List<FlowerDto> getFlowers() {
+    public List<FlowerDto> getFlowers(@RequestParam(required = false) Integer categoryId) {
+        if (categoryId != null) {
+            return flowerService.getFlowersByCategory(categoryId);
+        }
         return flowerService.getAllFlowers();
     }
 
@@ -37,5 +40,13 @@ public class FlowerController {
     @DeleteMapping("/{id}")
     public void deleteFlowerById(@PathVariable Integer id){
         flowerService.deleteFlowerById(id);
+    }
+
+    @PutMapping("/{id}")
+    public FlowerDto updateFlower(
+            @PathVariable Integer id,
+            @RequestBody FlowerDto flower
+    ){
+        return flowerService.updateFlower(id, flower);
     }
 }

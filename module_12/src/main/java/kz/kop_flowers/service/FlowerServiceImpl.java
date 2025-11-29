@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +24,14 @@ public class FlowerServiceImpl implements FlowerService {
     public List<FlowerDto> getAllFlowers() {
         List<Flower> flowers = flowerRepository.findAll();
         return flowers.stream()
+                .map(mapper::fromEntityToDto)
+                .toList();
+    }
+
+    @Override
+    public List<FlowerDto> getFlowersByCategory(Integer categoryId) {
+        return flowerRepository.findAll().stream()
+                .filter(flower -> Objects.equals(flower.getCategory().getId(), categoryId))
                 .map(mapper::fromEntityToDto)
                 .toList();
     }
@@ -47,6 +57,16 @@ public class FlowerServiceImpl implements FlowerService {
     public void deleteFlowerById(Integer id){
         Flower flower = flowerRepository.findById(id).orElseThrow(() -> new FlowerNotFoundException("Flower is not exists"));
         flowerRepository.delete(flower);
+    }
+
+    public FlowerDto updateFlower(Integer id, FlowerDto flowerDto){
+        Flower flower = flowerRepository.findById(id).orElseThrow(() -> new FlowerNotFoundException("Flower is not exists"));
+        flower.setName(flowerDto.getName());
+        flower.setPrice(flowerDto.getPrice());
+        flower.setSize(flowerDto.getSize());
+        flower.setCategory(categoryService.getCategoryById(flowerDto.getCategory().getId()));
+        flower = flowerRepository.save(flower);
+        return mapper.fromEntityToDto(flower);
     }
 
 }
