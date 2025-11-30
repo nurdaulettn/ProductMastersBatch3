@@ -18,6 +18,7 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
+        <module name="KopFlowers (1)" />
         <module name="KopFlowers" />
       </profile>
     </annotationProcessing>
@@ -25,6 +26,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="KopFlowers" options="-parameters" />
+      <module name="KopFlowers (1)" options="-parameters" />
       <module name="module_11" options="-parameters" />
     </option>
   </component>

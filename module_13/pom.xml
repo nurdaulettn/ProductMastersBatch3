@@ -48,6 +48,12 @@
       <artifactId>postgresql</artifactId>
       <scope>runtime</scope>
     </dependency>
+      <dependency>
+          <groupId>kz.kop_flowers</groupId>
+          <artifactId>KopFlowers</artifactId>
+          <version>1.0.0</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 
   <build>
