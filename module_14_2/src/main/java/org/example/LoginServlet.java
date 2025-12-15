@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.Objects;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -33,11 +34,16 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
 
-        out.println("<form method='POST' action='/ServletPractice/login'>");
-        out.println("Username: <input type='text' name='username' required><br>");
-        out.println("Password: <input type='password' name='password' required><br>");
-        out.println("<input type='submit' value='Login'>");
-        out.println("</form>");
+        HttpSession session = req.getSession(false);
+        if (!Objects.isNull(session)
+                && "teacher".equalsIgnoreCase((String) session.getAttribute("role"))) {
+            out.println("<form method='POST' action='/ServletPractice/login'>");
+            out.println("Username: <input type='text' name='username' required><br>");
+            out.println("Password: <input type='password' name='password' required><br>");
+            out.println("<input type='submit' value='Login'>");
+            out.println("</form>");
+        }
+
     }
 
     @Override
