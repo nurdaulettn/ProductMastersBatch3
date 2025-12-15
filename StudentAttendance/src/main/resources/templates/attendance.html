@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendances</title>
+</head>
+<body>
+<!--<div th:if="${isTeacher}">-->
+    <form method="post" th:action="@{/attendance}" th:object="${dto}">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required>
+        </div>
+
+        <div>
+            <label for="groupName">Group name:</label>
+            <input type="text" id="groupName" th:field="*{groupName}" required>
+        </div>
+
+        <div>
+            <label>
+                <input type="checkbox" th:field="*{attended}">
+                Attended
+            </label>
+        </div>
+
+        <button type="submit">Add</button>
+    </form>
+<!--</div>-->
+
+<h2>Student Attendance List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>GroupName</th>
+        <th>Attended</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="attendance : ${attendances}">
+        <td th:text="${attendance.id}">1</td>
+        <td th:text="${attendance.name}">Name</td>
+        <td th:text="${attendance.groupName}">Group</td>
+        <td th:text="${attendance.getAttended}">isAttended</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
