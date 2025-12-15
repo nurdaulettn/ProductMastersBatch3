@@ -18,8 +18,18 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
-        <module name="KopFlowers (1)" />
         <module name="KopFlowers" />
+        <module name="KopFlowers (2)" />
+      </profile>
+      <profile name="Annotation profile for KopFlowers (1)" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="KopFlowers (1)" />
       </profile>
     </annotationProcessing>
   </component>
@@ -27,6 +37,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="KopFlowers" options="-parameters" />
       <module name="KopFlowers (1)" options="-parameters" />
+      <module name="KopFlowers (2)" options="-parameters" />
       <module name="module_11" options="-parameters" />
     </option>
   </component>
